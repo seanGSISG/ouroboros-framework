@@ -1,0 +1,61 @@
+{
+  "$schema": "https://ouroboros-spec.org/schema/config-v1.json",
+  "version": "2.0.0",
+  "name": "Ouroboros Framework Configuration",
+  "description": "Self-adapting, self-improving spec framework for ANY project type",
+
+  "enhancements": {
+    "adaptiveTaskSystem": true,
+    "patternRecognition": true,
+    "dynamicSkillsGeneration": true,
+    "requirementElicitation": true,
+    "qualityImprovement": true,
+    "gapDetection": true,
+    "preFlightValidation": true,
+    "dynamicPhaseSizing": true,
+    "smartScheduling": true,
+    "versionControlIntegration": true,
+    "selfImprovementMetrics": true,
+    "progressVisualization": false
+  },
+
+  "parallelism": {
+    "hardCap": 7,
+    "defaultAgents": 5,
+    "smallTaskThreshold": 50000,
+    "mediumTaskThreshold": 100000,
+    "contextSafetyMargin": 150000
+  },
+
+  "paths": {
+    "specsDir": "ouroboros/specs",
+    "patternsDir": "ouroboros/patterns",
+    "skillsDir": ".claude/skills",
+    "configDir": "ouroboros/config"
+  },
+
+  "contextOptimization": {
+    "useXmlTags": true,
+    "progressiveDisclosure": true,
+    "summaryFiles": true,
+    "deltaBasedUpdates": true
+  },
+
+  "patterns": {
+    "enabled": [
+      "structured-sequential",
+      "creative-iterative",
+      "resource-management",
+      "exploratory-research",
+      "modern-dev-workflow"
+    ]
+  },
+
+  "comments": {
+    "adaptiveTaskSystem": "Core Ouroboros feature - tasks evolve during execution",
+    "patternRecognition": "Detects project patterns across ANY domain (code, docs, planning, etc.)",
+    "dynamicSkillsGeneration": "Auto-generates .claude/skills/{feature-name}.md for context efficiency",
+    "hardCap": "Never exceed 7 parallel agents (only for small context tasks)",
+    "defaultAgents": "Safe default: 4-5 agents balances speed and safety"
+  }
+}

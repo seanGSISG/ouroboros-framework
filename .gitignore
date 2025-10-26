@@ -1,0 +1,37 @@
+# Ouroboros Framework - Git Ignore
+
+# User spec directories (generated during use)
+specs/*
+!specs/.gitkeep
+
+# Auto-generated skills (project-specific)
+.claude/skills/*
+!.claude/skills/.gitkeep
+
+# Learning data (privacy-preserving, local only)
+ouroboros/patterns/*-learned.json
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*~
+.DS_Store
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Node modules (if any)
+node_modules/
+
+# Python cache (if any)
+__pycache__/
+*.pyc
+*.pyo
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
