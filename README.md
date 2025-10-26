@@ -1,299 +1,274 @@
 # Ouroboros Framework
 
-**Universal Spec-Driven Development Framework**
+🐍 **Self-adapting spec-driven development for ANY project type**
 
-*"The serpent that eats its own tail grows stronger with each iteration."* 🐍
-
----
-
-## What is Ouroboros?
-
-Ouroboros is a **self-adapting, self-improving spec-driven development framework** that works for ANY project type:
-- ✅ Code projects (APIs, CLIs, web apps, PowerShell scripts)
-- ✅ Documentation (user guides, API docs, blog posts)
-- ✅ Planning (vacation itineraries, event planning, business processes)
-- ✅ Scripts (deployment automation, infrastructure as code)
-- ✅ Creative work (design systems, content creation)
-
-**Key Principle**: Every execution generates insights that improve future executions—the serpent feeds on its own output and grows wiser.
+*The serpent that eats its own tail grows stronger with each iteration.*
 
 ---
 
-## Directory Structure
+## What is This?
 
-```
-ouroboros/
-├── .claude/                              # Claude Code Infrastructure
-│   ├── agents/                           # Agent specifications
-│   │   └── spec-quality.md               # Universal quality improvement agent
-│   ├── commands/                         # Slash commands
-│   │   └── ouroboros-update.md           # Update managed blocks command
-│   ├── system-prompts/                   # Workflow orchestrators
-│   │   └── ouroboros-workflow-starter.md # Main workflow orchestrator
-│   └── skills/                           # Auto-generated project skills (empty)
-│
-├── ouroboros/                            # Framework Resources
-│   ├── CLAUDE.md                         # Comprehensive workflow guide (8KB)
-│   ├── PATTERNS.md                       # Universal patterns guide
-│   ├── CONTEXT_OPTIMIZATION.md           # Context-saving strategies
-│   ├── MIGRATION.md                      # Migration guide from OpenSpec v1
-│   │
-│   ├── config/                           # Framework configuration
-│   │   └── ouroboros-config.json         # Enhancement toggles
-│   │
-│   ├── templates/                        # Templates for generated files
-│   │   ├── subagent-summary-template.md
-│   │   ├── phase-consolidation-template.md
-│   │   ├── preflight-validation-report.md
-│   │   └── patterns/                     # Pattern-based spec templates
-│   │       ├── README.md
-│   │       ├── structured-sequential-*.md
-│   │       ├── creative-iterative-*.md
-│   │       ├── resource-management-*.md
-│   │       ├── exploratory-research-*.md
-│   │       └── modern-dev-workflow-*.md
-│   │
-│   ├── intelligence/                     # Intelligence components
-│   │   ├── pattern-recognizer.md         # Pattern detection algorithm
-│   │   ├── skills-generator.md           # Auto-generates project skills
-│   │   ├── learning-engine.md            # Self-improvement metrics
-│   │   └── template-selector.md          # Template selection wizard
-│   │
-│   ├── validators/                       # Validation systems
-│   │   └── preflight.md                  # 5-layer pre-flight validation
-│   │
-│   ├── patterns/                         # Learned pattern library
-│   │   ├── resource-management-learned.json
-│   │   └── creative-iterative-learned.json
-│   │
-│   └── examples/                         # Cross-domain examples
-│       ├── README.md
-│       ├── vacation-planning-europe/     # Planning project example
-│       ├── powershell-infrastructure/    # Scripts project example (WIP)
-│       └── api-documentation/            # Documentation project example (WIP)
-│
-└── specs/                                # User feature specs (generated during use)
-    └── {feature-name}/
-        ├── requirements.md
-        ├── design.md
-        ├── tasks.md
-        └── phases/
-            └── {phase-id}/
-                ├── summary-{task-id}.md
-                └── consolidated.md
-```
+A framework that helps you plan and execute ANY project through:
+- **Pattern-based templates** (code, docs, planning, scripts, creative)
+- **Adaptive tasks** (tasks evolve based on real discoveries)
+- **Parallel execution** (1-7 agents working simultaneously)
+- **Context efficiency** (60-75% token savings)
+
+Works for: REST APIs, vacation planning, documentation, PowerShell scripts, design systems, and more.
 
 ---
 
-## Core Features
+## Quick Start (3 Steps)
 
-### 🐍 Self-Adapting Tasks
-Tasks evolve during execution based on real discoveries. When Phase 2 discovers that "Swiss hotels require 3-night minimum," Phase 3 tasks automatically update.
+### 1. Install
 
-### 🌍 Project Agnosticism
-Works for ANY project type. Pattern recognition is based on **characteristics** (iterative, sequential, exploratory), not tech stacks.
-
-### 📊 Universal Patterns (5)
-1. **Structured Sequential Workflow** - Clear stages, validation gates (data pipelines, user guides)
-2. **Creative Iterative Process** - Multiple revisions, feedback loops (UI design, vacation planning)
-3. **Resource Management** - CRUD operations, state tracking (REST APIs, budget management)
-4. **Exploratory Research** - Discovery-driven, hypothesis testing (performance analysis, vendor selection)
-5. **Modern Development Workflow** - Automation-first, observable (microservices, doc-as-code)
-
-### ⚡ Dynamic Parallelization
-Runs 1-7 parallel agents based on context budgets. Small tasks: 7 agents, Large tasks: 2-3 agents.
-
-### 💾 Context Efficiency
-**60-75% token savings** through:
-- XML tags (40% savings vs JSON)
-- Auto-generated skills (read 3K instead of 30K)
-- Summary files (90% savings for consolidation)
-- Delta-based updates (95% savings)
-
-### 🎯 Pre-Flight Validation
-5-layer validation system catches 95%+ of spec issues before execution.
-
-### 📈 Continuous Learning
-Each execution improves future executions through pattern learning and estimation model refinement.
-
----
-
-## Quick Start
-
-### Installation
-
-Copy the entire `ouroboros/` directory to your project:
+Copy this repo to your project:
 
 ```bash
-cp -r path/to/ouroboros/ your-project/
+git clone https://github.com/seanGSISG/ouroboros-framework.git
+cd ouroboros-framework
 ```
 
-### Create Your First Spec
+Or copy just the `ouroboros/` directory into your existing project.
 
-1. **Create spec directory**:
+### 2. Create a Spec
+
+Run the slash command:
+
+```
+/new-spec
+```
+
+You'll be prompted for:
+1. Feature name (e.g., `user-authentication`, `vacation-planning`, `api-docs`)
+2. Project type (code, documentation, planning, scripts, creative)
+3. Pattern selection (automatic based on your project type)
+
+The command creates:
+```
+ouroboros/specs/{your-feature}/
+├── requirements.md    # EARS-format requirements (auto-filled template)
+├── design.md          # Architecture approach (auto-filled template)
+└── tasks.md           # Implementation phases (auto-filled template)
+```
+
+### 3. Execute the Workflow
+
+Say to Claude:
+
+```
+Use ouroboros workflow to implement {your-feature}
+```
+
+The framework will:
+- ✅ Read your spec files
+- ✅ Execute tasks in parallel (when possible)
+- ✅ Save discoveries after each phase
+- ✅ Recommend task updates based on findings
+- ✅ Auto-generate a project skill for context savings
+- ✅ Create all deliverables
+
+---
+
+## Complete E2E Example
+
 ```bash
-mkdir -p ouroboros/specs/your-feature
+# 1. Create a new spec
+> /new-spec user-authentication
+📋 What type of project is this?
+1. Code project
+2. Documentation
+3. Planning
+4. Scripts/Automation
+5. Creative work
+
+> 1
+
+📋 Does this involve CRUD operations?
+> Yes
+
+✅ Created spec: user-authentication
+   Pattern: Resource Management
+   Location: ouroboros/specs/user-authentication/
+
+# 2. Edit the spec files (optional - templates are pre-filled)
+# - requirements.md: Add/customize your requirements
+# - design.md: Add/customize your architecture
+# - tasks.md: Add/customize your implementation phases
+
+# 3. Execute the workflow
+> Use ouroboros workflow to implement user-authentication
+
+🐍 Executing user-authentication spec...
+
+Phase 1: Foundation
+  ✅ Task 1.1 complete
+  ✅ Task 1.2 complete
+
+Phase 2: Core Features (4 parallel agents)
+  🐍 Task 2.1: User model (Agent 1)
+  🐍 Task 2.2: Authentication logic (Agent 2)
+  🐍 Task 2.3: JWT tokens (Agent 3)
+  🐍 Task 2.4: Password hashing (Agent 4)
+  
+  ✅ All tasks complete
+  
+  📊 Phase 2 Consolidation:
+  - Discovery: JWT expiry should be configurable
+  - Recommendation: Add task 3.5 for environment config
+  
+  Would you like to update tasks? (yes/no)
+  > yes
+  
+  ✅ Tasks updated (tasks-v2.md created)
+
+Phase 3: Testing & Polish (3 parallel agents)
+  ...
+
+✅ user-authentication complete!
+
+Artifacts created:
+  - ouroboros/specs/user-authentication/phases/ (all summaries)
+  - .claude/skills/user-authentication.md (auto-generated skill)
+  - All implementation files
 ```
 
-2. **Write requirements** (EARS format):
-```markdown
-# Requirements: Your Feature
+---
 
-**1.1** WHEN {trigger}, the system SHALL {capability}
-  - AC 1.1.1: {Acceptance criterion}
-```
+## Available Commands
 
-3. **Write design**:
-```markdown
-# Design: Your Feature
+| Command | Purpose | Usage |
+|---------|---------|-------|
+| `/new-spec` | Create new spec | `/new-spec {feature-name}` or `/new-spec` |
+| `/list-specs` | List all specs | `/list-specs` |
+| `/archive-spec` | Archive completed spec | `/archive-spec {feature-name}` |
+| `/ouroboros-update` | Update managed blocks | `/ouroboros-update` |
 
-## Architecture Approach
-{How components fit together}
-
-## Component Structure
-{What needs to be built}
-```
-
-4. **Write tasks**:
-```markdown
-# Tasks: Your Feature
-
-### Phase 1: Foundation (Sequential 🐌)
-- [ ] **🐌 1.1 Setup**
-  - {Task details}
-
-### Phase 2: Core Features (4 parallel 🐍)
-- [ ] **🐍 2.1 Feature A**
-  - {Task details}
-  - **Can run in parallel with 2.2, 2.3, 2.4**
-```
-
-5. **Execute with Ouroboros**:
-```
-Use ouroboros workflow to implement your-feature
-Execute all tasks automatically in parallel
-```
+See [COMMANDS.md](COMMANDS.md) for detailed documentation.
 
 ---
 
 ## How It Works
 
 ### 1. Pattern Detection
-Ouroboros analyzes your requirements and automatically detects which of the 5 universal patterns fits best.
+Ouroboros has 5 universal patterns based on **project characteristics**, not tech stacks:
 
-### 2. Spec Generation
-Creates optimized requirements, design, and task structure based on the detected pattern.
+- **Structured Sequential** - Clear stages (data pipelines, user guides)
+- **Creative Iterative** - Multiple revisions (UI design, vacation planning)
+- **Resource Management** - CRUD operations (REST APIs, budget tracking)
+- **Exploratory Research** - Discovery-driven (performance analysis, vendor selection)
+- **Modern Dev Workflow** - Automation-first (microservices, doc-as-code)
 
-### 3. Parallel Execution
-Breaks tasks into phases and runs compatible tasks in parallel (up to 7 agents).
-
-### 4. Adaptive Updates
-After each phase:
-- Subagents save summaries with discoveries
+### 2. Adaptive Tasks
+During execution:
+- Tasks run in parallel when possible (1-7 agents)
+- Each agent saves a summary with discoveries
 - Orchestrator consolidates findings
-- You review and approve task updates
-- Tasks evolve based on real-world discoveries
+- You approve task updates based on discoveries
+- Tasks evolve (tasks.md → tasks-v2.md → tasks-v3.md)
 
-### 5. Continuous Learning
-Metrics captured during execution improve:
-- Pattern detection accuracy
-- Estimation models
-- Task breakdown strategies
-
----
-
-## Key Concepts
-
-### EARS Format
-Requirements use **Easy Approach to Requirements Syntax**:
-- **WHEN** - Event-driven
-- **IF** - Conditional logic
-- **WHERE** - Location/scope
-- **WHILE** - Ongoing state
-
-### Parallel vs Sequential
-- 🐍 **Parallel tasks**: Can run simultaneously (different files, independent work)
-- 🐌 **Sequential tasks**: Must run one at a time (dependencies, same files)
-
-### Phase Consolidation
-After each phase with parallel tasks:
-1. Subagents save summaries (discoveries, recommendations)
-2. Orchestrator consolidates into single report
-3. Recommends task updates based on discoveries
-4. You approve/skip/modify updates
-5. Tasks versioned (tasks.md → tasks-v2.md → tasks-v3.md)
-
-### Auto-Generated Skills
-After Phase 1, Ouroboros creates `.claude/skills/{feature-name}.md`:
-- Project context (goals, constraints)
-- Key architectural decisions
-- Important terminology
-- Patterns to follow
-- Discoveries from previous phases
-
-This saves 10-25K tokens per task vs re-reading full specs (60-75% reduction!).
+### 3. Context Efficiency
+**60-75% token savings** through:
+- Auto-generated skills (read 3K instead of 30K)
+- Summary files (90% savings on consolidation)
+- XML tags (40% savings vs JSON)
+- Delta-based updates (95% savings)
 
 ---
 
-## Examples
+## Real-World Examples
 
-### Example 1: Vacation Planning (Planning Project)
-**Pattern**: Creative Iterative Process
-**Features**: Multiple revision cycles, budget-driven adaptations
-**Discovery**: "Swiss hotels require 3-night minimum" → Updated tasks
-**Time Savings**: 47% (122 min vs 249 min sequential)
+### Example 1: REST API (Code Project)
+```
+/new-spec user-authentication
+→ Pattern: Resource Management
+→ Time: 45 min (vs 95 min sequential)
+→ Savings: 56% faster, 68% less context
+```
 
-See: `ouroboros/examples/vacation-planning-europe/`
+### Example 2: Vacation Planning (Planning Project)
+```
+/new-spec europe-vacation-2024
+→ Pattern: Creative Iterative
+→ Time: 122 min (vs 249 min sequential)
+→ Savings: 51% faster, adaptive task updates
+→ Example: "Swiss hotels need 3-night minimum" → Tasks updated automatically
+```
 
-### Example 2: REST API (Code Project)
-**Pattern**: Resource Management
-**Features**: CRUD operations, parallel resource development
-**Time Savings**: 56% (58K per agent vs 140K without optimization)
+See `ouroboros/examples/vacation-planning-europe/` for complete example.
 
 ### Example 3: API Documentation (Documentation Project)
-**Pattern**: Structured Sequential Workflow
-**Features**: Stage-by-stage validation, parallel section writing
+```
+/new-spec api-documentation-v2
+→ Pattern: Structured Sequential
+→ Time: 52 min (vs 98 min sequential)
+→ Savings: 47% faster
+```
 
 ---
 
-## Configuration
+## Project Structure After Installation
 
-Edit `ouroboros/ouroboros/config/ouroboros-config.json` to enable/disable enhancements:
-
-```json
-{
-  "enhancements": {
-    "adaptive_tasks": true,
-    "pattern_recognition": true,
-    "skills_generation": true,
-    "dynamic_sizing": true,
-    "phase_consolidation": true,
-    "quality_improvement": true,
-    "learning_engine": true,
-    "preflight_validation": true
-  }
-}
 ```
+your-project/
+├── ouroboros/                        # The framework (copy this directory)
+│   ├── .claude/                      # Claude Code discovers commands here
+│   │   ├── commands/                 # Slash commands (/new-spec, etc.)
+│   │   ├── agents/                   # Quality improvement agent
+│   │   └── system-prompts/           # Workflow orchestrator
+│   ├── ouroboros/                    # Framework resources
+│   │   ├── templates/                # Pattern templates
+│   │   ├── intelligence/             # Pattern recognizer, skills generator
+│   │   ├── validators/               # Pre-flight validation
+│   │   └── examples/                 # Cross-domain examples
+│   └── specs/                        # Your feature specs (generated)
+│       └── {feature-name}/
+│           ├── requirements.md
+│           ├── design.md
+│           ├── tasks.md
+│           └── phases/               # Execution artifacts
+└── .claude/skills/                   # Auto-generated skills (project root)
+    └── {feature-name}.md
+```
+
+---
+
+## Key Benefits
+
+- 🐍 **Self-Adapting**: Tasks evolve based on real discoveries
+- 🌍 **Project Agnostic**: Works for ANY project type
+- ⚡ **Parallel Execution**: 1-7 agents (40-60% time savings)
+- 💾 **Context Efficient**: 60-75% token reduction
+- 🎯 **Pre-Flight Validation**: Catches 95%+ of issues before execution
+- 📈 **Continuous Learning**: Each execution improves future executions
 
 ---
 
 ## Documentation
 
-- **CLAUDE.md** - Comprehensive workflow guide (8KB)
-- **PATTERNS.md** - Detailed guide to all 5 universal patterns
-- **CONTEXT_OPTIMIZATION.md** - Context-saving strategies explained
-- **MIGRATION.md** - Migrating from OpenSpec v1 to Ouroboros v2
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Directory structure & design rationale
+- **[COMMANDS.md](COMMANDS.md)** - Slash command reference
+- **[TESTING.md](TESTING.md)** - Integration tests & verification
+- **[STATUS.md](STATUS.md)** - Current status & component inventory
+- **[ouroboros/CLAUDE.md](ouroboros/CLAUDE.md)** - Comprehensive workflow guide
+- **[ouroboros/PATTERNS.md](ouroboros/PATTERNS.md)** - Universal patterns explained
+- **[ouroboros/CONTEXT_OPTIMIZATION.md](ouroboros/CONTEXT_OPTIMIZATION.md)** - Context-saving strategies
+- **[ouroboros/MIGRATION.md](ouroboros/MIGRATION.md)** - Migrating from OpenSpec v1
 
 ---
 
-## Success Metrics
+## Requirements
 
-Ouroboros has achieved:
-- ✅ **60-75% context reduction** through optimization strategies
-- ✅ **40-60% time savings** through intelligent parallelization
-- ✅ **95%+ spec issue detection** via pre-flight validation
-- ✅ **68% → 94% estimation accuracy** over time through learning
-- ✅ **Project agnosticism** - works for code, docs, planning, scripts, creative
+- **Claude Code** (or any Claude interface that supports slash commands)
+- **Claude Sonnet 4.5** or later (200K context window)
+
+---
+
+## Support & Contributions
+
+- **Issues**: Report bugs or request features via GitHub Issues
+- **Discussions**: Share your specs and experiences
+- **Pull Requests**: Contributions welcome!
 
 ---
 
@@ -301,7 +276,7 @@ Ouroboros has achieved:
 
 > *"The serpent that eats its own tail grows stronger with each iteration."*
 
-Ouroboros doesn't just execute your plan—it learns from execution and improves future plans. Each spec makes the next one better.
+Ouroboros doesn't just execute your plan—it **learns** from execution and **improves** future plans. Each spec makes the next one better.
 
 **This is spec-driven development evolved**:
 - Not just planning, but **adaptive planning**
@@ -311,20 +286,10 @@ Ouroboros doesn't just execute your plan—it learns from execution and improves
 
 ---
 
-## Contributing
-
-The Ouroboros framework improves through use. As you execute specs:
-- Pattern library grows
-- Estimation models improve
-- Templates become more refined
-- Learning compounds
-
----
-
 ## License
 
-*Details TBD*
+*To be determined - suggest MIT or Apache 2.0*
 
 ---
 
-🐍 **The ancient serpent coils around your project, protecting and improving it...** 🐍
+🐍 **Ready to begin? Run `/new-spec` and let the serpent guide you!** 🐍
