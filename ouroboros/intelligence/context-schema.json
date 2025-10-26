@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ouroboros Spec Context",
+  "description": "User-provided context for dynamic spec generation",
+  "type": "object",
+  "required": ["featureName", "domain", "pattern", "generatedAt"],
+  "properties": {
+    "featureName": {
+      "type": "string",
+      "description": "Kebab-case feature name (e.g., 'vacation-planner', 'user-auth')",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "examples": ["vacation-planner", "api-documentation", "user-authentication"]
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "software-development",
+        "documentation",
+        "planning",
+        "creative",
+        "data-analysis"
+      ],
+      "description": "Project domain category"
+    },
+    "pattern": {
+      "type": "string",
+      "enum": [
+        "structured-sequential",
+        "creative-iterative",
+        "resource-management",
+        "exploratory-research",
+        "modern-dev-workflow"
+      ],
+      "description": "Ouroboros pattern selected"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of generation"
+    },
+    "scopeAnswers": {
+      "type": "object",
+      "description": "Pattern-specific answers from scope questions",
+      "additionalProperties": true,
+      "examples": [
+        {
+          "resource_type": "vacation bookings",
+          "operations": ["Add", "View", "Update", "Delete"],
+          "access_control_level": "Just me"
+        },
+        {
+          "project_description": "REST API for user management",
+          "quality_gates": ["Automated tests", "Linting"],
+          "deployment_method": "Cloud hosting"
+        }
+      ]
+    },
+    "generationMethod": {
+      "type": "string",
+      "enum": ["dynamic", "static", "manual"],
+      "default": "dynamic",
+      "description": "How this spec was created"
+    },
+    "version": {
+      "type": "string",
+      "default": "2.0",
+      "description": "Context schema version"
+    }
+  },
+  "examples": [
+    {
+      "featureName": "vacation-planner",
+      "domain": "planning",
+      "pattern": "resource-management",
+      "generatedAt": "2025-10-26T01:30:00Z",
+      "scopeAnswers": {
+        "resource_type": "vacation bookings",
+        "operations": ["Add new items", "View/search existing items", "Update/modify items", "Remove/delete items"],
+        "access_control_level": "Just me",
+        "validation_rules": "Bookings need date, location, and cost",
+        "organization_method": "By date/time"
+      },
+      "generationMethod": "dynamic",
+      "version": "2.0"
+    },
+    {
+      "featureName": "user-authentication",
+      "domain": "software-development",
+      "pattern": "resource-management",
+      "generatedAt": "2025-10-26T01:35:00Z",
+      "scopeAnswers": {
+        "resource_type": "user accounts",
+        "operations": ["Add new items", "View/search existing items", "Update/modify items", "Remove/delete items"],
+        "access_control_level": "Specific people/roles",
+        "validation_rules": "Unique email, secure password hash",
+        "access_method": "REST API endpoints"
+      },
+      "generationMethod": "dynamic",
+      "version": "2.0"
+    },
+    {
+      "featureName": "ouroboros-meta-test",
+      "domain": "software-development",
+      "pattern": "modern-dev-workflow",
+      "generatedAt": "2025-10-26T01:40:00Z",
+      "scopeAnswers": {
+        "project_description": "Meta-test of Ouroboros framework itself",
+        "quality_gates": ["Automated tests", "Manual validation"],
+        "deployment_method": "Local execution",
+        "observability_needs": "Test results and token usage metrics"
+      },
+      "generationMethod": "dynamic",
+      "version": "2.0"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "featureName": "test-vacation-planner",
+  "domain": "planning",
+  "pattern": "resource-management",
+  "generatedAt": "2025-10-26T02:00:00Z",
+  "scopeAnswers": {
+    "resource_type": "vacation bookings",
+    "operations": ["Add new items", "View/search existing items", "Update/modify items", "Remove/delete items"],
+    "access_control_level": "Just me",
+    "validation_rules": "Bookings need date, location, and cost",
+    "organization_method": "By date/time"
+  },
+  "generationMethod": "dynamic",
+  "version": "2.0"
+}

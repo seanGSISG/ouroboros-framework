@@ -1,0 +1,361 @@
+# Ouroboros Jargon Detection Rules
+# Purpose: Validate generated specs don't contain domain-inappropriate jargon
+# Version: 1.0
+# Last Updated: 2025-10-26
+
+# Domain Definitions
+domains:
+  software-development:
+    aliases: ["code", "software", "dev", "development"]
+    description: "APIs, CLIs, web apps, scripts, libraries"
+
+  documentation:
+    aliases: ["docs", "documentation", "writing"]
+    description: "User guides, API docs, blog posts, tutorials"
+
+  planning:
+    aliases: ["planning", "organization", "project-management"]
+    description: "Vacation planning, event planning, workflows, processes"
+
+  creative:
+    aliases: ["creative", "design", "artistic"]
+    description: "Design systems, content creation, branding, visual art"
+
+  data-analysis:
+    aliases: ["data", "analysis", "research"]
+    description: "Data analysis, research, investigation, optimization"
+
+# Jargon Categories
+# Each category lists terms that are FORBIDDEN unless domain allows them
+
+jargon_categories:
+  devops_infrastructure:
+    terms:
+      - Docker
+      - Kubernetes
+      - K8s
+      - container
+      - containers
+      - containerization
+      - orchestration
+      - CI/CD
+      - "GitHub Actions"
+      - "GitLab CI"
+      - Jenkins
+      - pipeline
+      - Terraform
+      - CloudFormation
+      - Pulumi
+      - "Infrastructure as Code"
+      - IaC
+      - GitOps
+      - deployment
+      - staging
+      - production
+      - deploy
+      - Helm
+      - kubectl
+
+    allowed_domains:
+      - software-development
+
+    severity: HIGH
+    message: "DevOps/infrastructure jargon found in non-software project"
+
+  software_architecture:
+    terms:
+      - API
+      - REST
+      - RESTful
+      - GraphQL
+      - OpenAPI
+      - Swagger
+      - microservice
+      - microservices
+      - monolith
+      - serverless
+      - endpoint
+      - endpoints
+      - database
+      - databases
+      - schema
+      - schemas
+      - migration
+      - migrations
+      - CRUD
+      - JWT
+      - OAuth
+      - authentication
+      - authorization
+      - middleware
+      - backend
+      - frontend
+
+    allowed_domains:
+      - software-development
+      - documentation  # API docs can mention APIs
+
+    exceptions:
+      - context: "API docs"  # OK to say "API" in API documentation
+        terms: [API, endpoint, endpoints, REST, GraphQL]
+
+    severity: HIGH
+    message: "Software architecture jargon found inappropriately"
+
+  observability_operations:
+    terms:
+      - Prometheus
+      - Grafana
+      - CloudWatch
+      - Datadog
+      - "New Relic"
+      - OpenTelemetry
+      - "distributed tracing"
+      - metrics
+      - logging
+      - alerting
+      - monitoring
+      - "health check"
+      - telemetry
+      - observability
+
+    allowed_domains:
+      - software-development
+
+    severity: MEDIUM
+    message: "Observability jargon found in non-software project"
+
+  development_tools:
+    terms:
+      - JSON
+      - YAML
+      - XML
+      - linting
+      - linter
+      - formatter
+      - "code formatter"
+      - "unit test"
+      - "integration test"
+      - "end-to-end test"
+      - e2e
+      - "test coverage"
+      - build
+      - compile
+      - "version control"
+      - Git
+      - GitHub
+      - GitLab
+      - repository
+      - repo
+      - commit
+      - pull request
+      - PR
+      - merge
+
+    allowed_domains:
+      - software-development
+      - documentation  # Docs might mention Git for doc-as-code
+
+    severity: MEDIUM
+    message: "Development tools jargon found inappropriately"
+
+  cloud_providers:
+    terms:
+      - AWS
+      - Azure
+      - GCP
+      - "Google Cloud"
+      - "Amazon Web Services"
+      - EC2
+      - S3
+      - Lambda
+      - "Cloud Functions"
+      - "App Engine"
+      - Heroku
+      - Vercel
+      - Netlify
+
+    allowed_domains:
+      - software-development
+
+    severity: MEDIUM
+    message: "Cloud provider jargon found in non-software project"
+
+# Domain-Specific Allowed Terms
+# These are OK in specific domains, help clarify appropriate vocabulary
+
+allowed_by_domain:
+  documentation:
+    encouraged:
+      - outline
+      - section
+      - chapter
+      - article
+      - post
+      - guide
+      - tutorial
+      - example
+      - diagram
+      - table of contents
+      - index
+      - glossary
+
+    conditionally_allowed:
+      - API  # Only if documenting an API
+      - endpoint  # Only if API docs
+      - code  # OK to mention code examples
+
+  planning:
+    encouraged:
+      - schedule
+      - itinerary
+      - booking
+      - reservation
+      - event
+      - timeline
+      - milestone
+      - task
+      - checklist
+      - budget
+      - venue
+      - participant
+      - attendee
+
+    forbidden:
+      - Never use software development terms
+
+  creative:
+    encouraged:
+      - design
+      - mockup
+      - wireframe
+      - prototype
+      - iteration
+      - feedback
+      - revision
+      - concept
+      - vision
+      - aesthetic
+      - branding
+      - style
+      - mood board
+
+    forbidden:
+      - Avoid technical implementation terms
+
+  data-analysis:
+    encouraged:
+      - hypothesis
+      - analysis
+      - research
+      - findings
+      - data
+      - metric
+      - trend
+      - pattern
+      - correlation
+      - insight
+      - report
+
+    conditionally_allowed:
+      - database  # If analyzing database performance
+      - API  # If analyzing API usage
+
+# Validation Rules
+
+validation_rules:
+  - rule_id: NO_JARGON_IN_WRONG_DOMAIN
+    check: "Scan spec content for jargon terms not allowed in the domain"
+    action: "Flag violation with term, category, severity"
+
+  - rule_id: MULTIPLE_DOMAINS_WARNING
+    check: "If domain is multi-domain (e.g., 'software + docs'), be lenient"
+    action: "Allow terms from all specified domains"
+
+  - rule_id: CONTEXT_EXCEPTION
+    check: "Check if term is in an allowed context (e.g., 'API' in 'API documentation')"
+    action: "Allow if context matches exception"
+
+  - rule_id: SEVERITY_THRESHOLD
+    check: "Count total violations by severity"
+    thresholds:
+      HIGH: 0  # Zero tolerance for HIGH severity in wrong domain
+      MEDIUM: 2  # Allow up to 2 MEDIUM violations (might be justified)
+      LOW: 5  # Allow up to 5 LOW violations
+    action: "Fail validation if thresholds exceeded"
+
+# Usage Examples
+
+examples:
+  - domain: planning
+    spec_content: "Phase 1: Book flights and reserve hotels"
+    result: PASS
+    reason: "No jargon, appropriate planning terms"
+
+  - domain: planning
+    spec_content: "Phase 2: Setup CI/CD pipeline for vacation"
+    result: FAIL
+    violations:
+      - term: "CI/CD"
+        category: devops_infrastructure
+        severity: HIGH
+    reason: "DevOps jargon in planning project"
+
+  - domain: documentation
+    spec_content: "Document API endpoints with request/response examples"
+    result: PASS
+    reason: "'API' allowed in documentation domain (API docs)"
+
+  - domain: creative
+    spec_content: "Deploy Kubernetes cluster for design system"
+    result: FAIL
+    violations:
+      - term: "Kubernetes"
+        category: devops_infrastructure
+        severity: HIGH
+    reason: "Infrastructure jargon in creative project"
+
+  - domain: software-development
+    spec_content: "Setup Docker containers and K8s deployment"
+    result: PASS
+    reason: "DevOps terms allowed in software development domain"
+
+# Detection Algorithm
+
+algorithm: |
+  1. Load spec content (requirements.md, design.md, tasks.md)
+  2. Identify spec domain from context or metadata
+  3. For each jargon category:
+     a. Check if domain allows this category
+     b. If not, scan content for terms from this category
+     c. For each match:
+        - Check if exception applies (context-based)
+        - If no exception, flag violation
+  4. Aggregate violations by severity
+  5. Check against severity thresholds
+  6. Return PASS/FAIL with violation details
+
+# Integration Points
+
+integration:
+  - location: ".claude/commands/ou-new-spec.md"
+    stage: "After spec generation, before saving"
+    action: "Validate generated spec, show violations to user"
+
+  - location: "ouroboros/validators/validate-spec.js" # Future
+    usage: "Standalone validation tool for existing specs"
+
+  - location: "ouroboros/intelligence/template-generator.md"
+    usage: "Add anti-jargon instructions to LLM prompts"
+
+---
+
+# Notes
+
+- This file is used by the dynamic template generation system
+- Violations are warnings, not hard errors (user can override)
+- Severity levels guide auto-fix suggestions
+- Update this file when new jargon categories emerge
+- Domain definitions should match those in domain-questions.md
+
+🐍 The serpent inscribes the laws that will govern its new scales... 🐍

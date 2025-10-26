@@ -13,6 +13,7 @@ A framework that helps you plan and execute ANY project through:
 - **Adaptive tasks** (tasks evolve based on real discoveries)
 - **Parallel execution** (1-7 agents working simultaneously)
 - **Context efficiency** (60-75% token savings)
+- **Intelligent expansion** (transforms templates into detailed specs)
 
 Works for: REST APIs, vacation planning, documentation, PowerShell scripts, design systems, and more.
 
@@ -20,117 +21,85 @@ Works for: REST APIs, vacation planning, documentation, PowerShell scripts, desi
 
 ## Quick Start (3 Steps)
 
-### 1. Install
-
-Copy this repo to your project:
-
-```bash
-git clone https://github.com/seanGSISG/ouroboros-framework.git
-cd ouroboros-framework
-```
-
-Or copy just the `ouroboros/` directory into your existing project.
-
-### 2. Create a Spec
-
-Run the slash command:
+### 1. Create a Spec
 
 ```
-/new-spec
+/ou-new-spec {feature-name}
 ```
 
-You'll be prompted for:
-1. Feature name (e.g., `user-authentication`, `vacation-planning`, `api-docs`)
-2. Project type (code, documentation, planning, scripts, creative)
-3. Pattern selection (automatic based on your project type)
+Choose your project type → Get pattern-based templates → Ready to expand
 
-The command creates:
-```
-ouroboros/specs/{your-feature}/
-├── requirements.md    # EARS-format requirements (auto-filled template)
-├── design.md          # Architecture approach (auto-filled template)
-└── tasks.md           # Implementation phases (auto-filled template)
-```
-
-### 3. Execute the Workflow
-
-Say to Claude:
+### 2. Expand and Validate
 
 ```
-Use ouroboros workflow to implement {your-feature}
+/ou-expand-spec {feature-name}
 ```
 
-The framework will:
-- ✅ Read your spec files
-- ✅ Execute tasks in parallel (when possible)
-- ✅ Save discoveries after each phase
-- ✅ Recommend task updates based on findings
-- ✅ Auto-generate a project skill for context savings
-- ✅ Create all deliverables
+Answer pattern-specific questions → Get detailed spec → Auto-validated → Ready to execute
+
+**Or use automated mode:**
+```
+/ou-expand-spec {feature-name} --auto
+```
+
+### 3. Execute
+
+```
+Use ouroboros workflow to implement {feature-name}
+```
+
+The framework runs tasks in parallel, learns from discoveries, and delivers your project.
 
 ---
 
-## Complete E2E Example
+## Complete Example
 
 ```bash
-# 1. Create a new spec
-> /new-spec user-authentication
-📋 What type of project is this?
-1. Code project
-2. Documentation
-3. Planning
-4. Scripts/Automation
-5. Creative work
+# 1. Create spec
+> /ou-new-spec user-authentication
+📋 What type of project? → Code project
+📋 CRUD operations? → Yes
+✅ Created: Resource Management pattern
 
-> 1
+# 2. Expand spec
+> /ou-expand-spec user-authentication --interactive
 
-📋 Does this involve CRUD operations?
-> Yes
+Q: What resources are you managing?
+> users, sessions
 
-✅ Created spec: user-authentication
-   Pattern: Resource Management
-   Location: ouroboros/specs/user-authentication/
+Q: Storage approach?
+> PostgreSQL
 
-# 2. Edit the spec files (optional - templates are pre-filled)
-# - requirements.md: Add/customize your requirements
-# - design.md: Add/customize your architecture
-# - tasks.md: Add/customize your implementation phases
+Q: Authentication method?
+> JWT tokens
 
-# 3. Execute the workflow
+✅ Expansion complete!
+   - 12 detailed requirements
+   - PostgreSQL + JWT architecture
+   - 15 tasks across 4 phases
+   - Auto-skill generated (saves 65% context)
+   - Validation: READY (0 blockers)
+
+# 3. Execute
 > Use ouroboros workflow to implement user-authentication
 
-🐍 Executing user-authentication spec...
-
-Phase 1: Foundation
-  ✅ Task 1.1 complete
-  ✅ Task 1.2 complete
+Phase 1: Foundation (sequential)
+  ✅ Database setup
+  ✅ Auth middleware
 
 Phase 2: Core Features (4 parallel agents)
-  🐍 Task 2.1: User model (Agent 1)
-  🐍 Task 2.2: Authentication logic (Agent 2)
-  🐍 Task 2.3: JWT tokens (Agent 3)
-  🐍 Task 2.4: Password hashing (Agent 4)
-  
-  ✅ All tasks complete
-  
-  📊 Phase 2 Consolidation:
-  - Discovery: JWT expiry should be configurable
-  - Recommendation: Add task 3.5 for environment config
-  
-  Would you like to update tasks? (yes/no)
-  > yes
-  
-  ✅ Tasks updated (tasks-v2.md created)
+  🐍 User model (Agent 1)
+  🐍 JWT logic (Agent 2)
+  🐍 Password hashing (Agent 3)
+  🐍 Session management (Agent 4)
+  ✅ All complete
 
-Phase 3: Testing & Polish (3 parallel agents)
-  ...
+Phase 3: Testing (3 parallel agents)
+  ✅ Unit tests
+  ✅ Integration tests
+  ✅ Security audit
 
-✅ user-authentication complete!
-
-Artifacts created:
-  - ouroboros/specs/user-authentication/phases/ (all summaries)
-  - .claude/skills/user-authentication.md (auto-generated skill)
-  - All implementation files
+✅ user-authentication complete! (45 min vs 95 min sequential = 53% faster)
 ```
 
 ---
@@ -139,96 +108,159 @@ Artifacts created:
 
 | Command | Purpose | Usage |
 |---------|---------|-------|
-| `/new-spec` | Create new spec | `/new-spec {feature-name}` or `/new-spec` |
-| `/list-specs` | List all specs | `/list-specs` |
-| `/archive-spec` | Archive completed spec | `/archive-spec {feature-name}` |
-| `/ouroboros-update` | Update managed blocks | `/ouroboros-update` |
+| `/ou-new-spec` | Create new spec | `/ou-new-spec {name}` |
+| `/ou-expand-spec` | Expand & validate spec | `/ou-expand-spec {name} [--interactive\|--auto]` |
+| `/ou-apply` | Execute spec tasks | `/ou-apply {name}` |
+| `/ou-list-specs` | List all specs | `/ou-list-specs` |
+| `/ou-archive-spec` | Archive completed spec | `/ou-archive-spec {name}` |
+| `/ou-archive` | Shorthand for archive-spec | `/ou-archive {name}` |
+| `/ou-proposal` | Alias for new-spec | `/ou-proposal {name}` |
+| `/ou-update` | Update managed blocks | `/ou-update` |
 
-See [COMMANDS.md](COMMANDS.md) for detailed documentation.
+**Quick Workflow**:
+```
+/ou-new-spec → /ou-expand-spec --auto → Execute → /ou-archive
+```
 
 ---
 
 ## How It Works
 
-### 1. Pattern Detection
-Ouroboros has 5 universal patterns based on **project characteristics**, not tech stacks:
+### 1. Universal Patterns
 
-- **Structured Sequential** - Clear stages (data pipelines, user guides)
-- **Creative Iterative** - Multiple revisions (UI design, vacation planning)
-- **Resource Management** - CRUD operations (REST APIs, budget tracking)
-- **Exploratory Research** - Discovery-driven (performance analysis, vendor selection)
-- **Modern Dev Workflow** - Automation-first (microservices, doc-as-code)
+Ouroboros has 5 patterns based on **project characteristics**, not tech stacks:
 
-### 2. Adaptive Tasks
+- **🗄️ Resource Management** - CRUD operations (APIs, databases, asset libraries)
+- **📝 Structured Sequential** - Step-by-step workflows (pipelines, guides, recipes)
+- **🎨 Creative Iterative** - Draft-refine cycles (designs, vacation planning, blog posts)
+- **🔬 Exploratory Research** - Discovery-driven (analysis, vendor selection, investigation)
+- **⚙️ Modern Dev Workflow** - Automation-first (CI/CD, infrastructure, deployment)
+
+Pattern detection is automatic—just answer a few questions!
+
+### 2. Intelligent Expansion
+
+The `/ou-expand-spec` command transforms generic templates into detailed specs:
+
+**Before Expansion** (generic template):
+```markdown
+## Requirements
+{stakeholders_placeholder}
+{authentication_placeholder}
+{database_placeholder}
+```
+
+**After Expansion** (your specific project):
+```markdown
+## Requirements
+**1.1** WHEN user registers, system SHALL create account with PostgreSQL
+  - AC 1.1.1: Validate email format
+  - AC 1.1.2: Hash password with bcrypt
+  - AC 1.1.3: Generate JWT token
+
+**1.2** WHEN user logs in, system SHALL authenticate with JWT
+  - AC 1.2.1: Verify token signature
+  - AC 1.2.2: Check expiration
+```
+
+**Benefits**:
+- ✅ Pattern-specific questions (no irrelevant questions)
+- ✅ Auto-skill generation (60-75% context savings)
+- ✅ Pre-flight validation (catches 95% of issues)
+- ✅ Ready to execute immediately
+
+### 3. Adaptive Tasks
+
 During execution:
 - Tasks run in parallel when possible (1-7 agents)
-- Each agent saves a summary with discoveries
-- Orchestrator consolidates findings
+- Each agent saves discoveries in phase summaries
+- Orchestrator consolidates findings after each phase
 - You approve task updates based on discoveries
-- Tasks evolve (tasks.md → tasks-v2.md → tasks-v3.md)
+- Tasks evolve: `tasks.md` → `tasks-v2.md` → `tasks-v3.md`
 
-### 3. Context Efficiency
+**Example Discovery**:
+```
+Phase 2 Discovery: JWT expiry should be configurable via environment variable
+Recommendation: Add task 3.5 for environment config setup
+→ You approve → tasks-v2.md created with new task
+```
+
+### 4. Context Efficiency
+
 **60-75% token savings** through:
-- Auto-generated skills (read 3K instead of 30K)
-- Summary files (90% savings on consolidation)
-- XML tags (40% savings vs JSON)
-- Delta-based updates (95% savings)
+
+| Technique | Savings | Example |
+|-----------|---------|---------|
+| Auto-generated skills | 90% | Read 3K skill instead of 30K specs |
+| Phase summaries | 90% | Read 500-token summary instead of 5K |
+| XML tags | 40% | XML vs JSON for structured data |
+| Delta updates | 95% | Only changed sections, not full file |
+
+**Real Impact**: A 200K token workflow → 50-70K tokens with Ouroboros
+
+---
+
+## Project Structure
+
+After installation:
+
+```
+your-project/
+├── ouroboros/                      # The framework (copy this directory)
+│   ├── .claude/
+│   │   ├── commands/               # 8 slash commands (ou-*)
+│   │   ├── agents/                 # 10 specialized agents
+│   │   └── system-prompts/         # Workflow orchestrator
+│   ├── ouroboros/                  # Framework resources
+│   │   ├── templates/patterns/     # 5 pattern templates
+│   │   ├── intelligence/           # Pattern recognizer, skills generator
+│   │   └── validators/             # Pre-flight validation
+│   └── specs/                      # Your specs (generated)
+│       └── {feature-name}/
+│           ├── requirements.md     # EARS-format requirements
+│           ├── design.md           # Architecture approach
+│           ├── tasks.md            # Implementation phases
+│           └── phases/             # Execution artifacts
+└── .claude/skills/                 # Auto-generated skills (project root)
+    └── {feature-name}.md           # Context-efficient summaries
+```
 
 ---
 
 ## Real-World Examples
 
-### Example 1: REST API (Code Project)
+### Example 1: REST API (Resource Management Pattern)
 ```
-/new-spec user-authentication
-→ Pattern: Resource Management
-→ Time: 45 min (vs 95 min sequential)
-→ Savings: 56% faster, 68% less context
+/ou-new-spec user-api
+/ou-expand-spec user-api --interactive
+→ Resources: users, sessions
+→ Storage: PostgreSQL
+→ Auth: JWT
+
+Execute: "Use ouroboros workflow to implement user-api"
+Time: 45 min (vs 95 min sequential)
+Savings: 53% faster, 68% less context
 ```
 
-### Example 2: Vacation Planning (Planning Project)
+### Example 2: Vacation Planning (Creative Iterative Pattern)
 ```
-/new-spec europe-vacation-2024
-→ Pattern: Creative Iterative
-→ Time: 122 min (vs 249 min sequential)
-→ Savings: 51% faster, adaptive task updates
-→ Example: "Swiss hotels need 3-night minimum" → Tasks updated automatically
-```
+/ou-new-spec europe-vacation-2024
+/ou-expand-spec europe-vacation-2024 --auto
 
-See `ouroboros/examples/vacation-planning-europe/` for complete example.
-
-### Example 3: API Documentation (Documentation Project)
-```
-/new-spec api-documentation-v2
-→ Pattern: Structured Sequential
-→ Time: 52 min (vs 98 min sequential)
-→ Savings: 47% faster
+Execute: "Use ouroboros workflow to implement europe-vacation-2024"
+Time: 122 min (vs 249 min sequential)
+Savings: 51% faster
+Adaptive: "Swiss hotels need 3-night minimum" → Tasks updated automatically
 ```
 
----
-
-## Project Structure After Installation
-
+### Example 3: API Documentation (Structured Sequential Pattern)
 ```
-your-project/
-├── ouroboros/                        # The framework (copy this directory)
-│   ├── .claude/                      # Claude Code discovers commands here
-│   │   ├── commands/                 # Slash commands (/new-spec, etc.)
-│   │   ├── agents/                   # Quality improvement agent
-│   │   └── system-prompts/           # Workflow orchestrator
-│   ├── ouroboros/                    # Framework resources
-│   │   ├── templates/                # Pattern templates
-│   │   ├── intelligence/             # Pattern recognizer, skills generator
-│   │   ├── validators/               # Pre-flight validation
-│   │   └── examples/                 # Cross-domain examples
-│   └── specs/                        # Your feature specs (generated)
-│       └── {feature-name}/
-│           ├── requirements.md
-│           ├── design.md
-│           ├── tasks.md
-│           └── phases/               # Execution artifacts
-└── .claude/skills/                   # Auto-generated skills (project root)
-    └── {feature-name}.md
+/ou-new-spec api-docs-v2
+/ou-expand-spec api-docs-v2 --interactive
+
+Execute: "Use ouroboros workflow to implement api-docs-v2"
+Time: 52 min (vs 98 min sequential)
+Savings: 47% faster
 ```
 
 ---
@@ -236,39 +268,87 @@ your-project/
 ## Key Benefits
 
 - 🐍 **Self-Adapting**: Tasks evolve based on real discoveries
-- 🌍 **Project Agnostic**: Works for ANY project type
-- ⚡ **Parallel Execution**: 1-7 agents (40-60% time savings)
-- 💾 **Context Efficient**: 60-75% token reduction
+- 🌍 **Project Agnostic**: Works for ANY project type (code, docs, planning, creative)
+- ⚡ **Parallel Execution**: 1-7 agents simultaneously (40-60% time savings)
+- 💾 **Context Efficient**: 60-75% token reduction via auto-skills
 - 🎯 **Pre-Flight Validation**: Catches 95%+ of issues before execution
+- 🧠 **Intelligent Expansion**: Pattern-specific questions for detailed specs
 - 📈 **Continuous Learning**: Each execution improves future executions
+- 🔧 **Tech Stack Agnostic**: Patterns work regardless of language/framework
 
 ---
 
-## Documentation
+## Installation
 
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Directory structure & design rationale
-- **[COMMANDS.md](COMMANDS.md)** - Slash command reference
-- **[TESTING.md](TESTING.md)** - Integration tests & verification
-- **[STATUS.md](STATUS.md)** - Current status & component inventory
-- **[ouroboros/CLAUDE.md](ouroboros/CLAUDE.md)** - Comprehensive workflow guide
-- **[ouroboros/PATTERNS.md](ouroboros/PATTERNS.md)** - Universal patterns explained
-- **[ouroboros/CONTEXT_OPTIMIZATION.md](ouroboros/CONTEXT_OPTIMIZATION.md)** - Context-saving strategies
-- **[ouroboros/MIGRATION.md](ouroboros/MIGRATION.md)** - Migrating from OpenSpec v1
+### Option 1: Clone Framework
+```bash
+git clone https://github.com/seanGSISG/ouroboros-framework.git
+cd ouroboros-framework
+```
+
+### Option 2: Copy to Existing Project
+```bash
+cp -r path/to/ouroboros/ your-project/
+```
+
+That's it! Claude Code automatically discovers the commands and agents.
 
 ---
 
 ## Requirements
 
-- **Claude Code** (or any Claude interface that supports slash commands)
-- **Claude Sonnet 4.5** or later (200K context window)
+- **Claude Code** (or any Claude interface supporting slash commands)
+- **Claude Sonnet 4.5+** (200K context window)
+- **Git** (optional, for version control)
 
 ---
 
-## Support & Contributions
+## Documentation
 
-- **Issues**: Report bugs or request features via GitHub Issues
-- **Discussions**: Share your specs and experiences
-- **Pull Requests**: Contributions welcome!
+**Getting Started**:
+- **[QUICKSTART.md](QUICKSTART.md)** - Get started in 5 minutes
+
+**Framework Deep Dives**:
+- **[ouroboros/CLAUDE.md](ouroboros/CLAUDE.md)** - Comprehensive workflow guide
+- **[ouroboros/PATTERNS.md](ouroboros/PATTERNS.md)** - Universal patterns explained
+- **[ouroboros/CONTEXT_OPTIMIZATION.md](ouroboros/CONTEXT_OPTIMIZATION.md)** - Context-saving strategies
+- **[ouroboros/MIGRATION.md](ouroboros/MIGRATION.md)** - Migrating from OpenSpec v1
+
+**Examples**:
+- **[ouroboros/examples/](ouroboros/examples/)** - Real-world specs across domains
+
+---
+
+## Core Components
+
+### Commands (8 slash commands)
+All in `.claude/commands/` with `ou-` prefix for easy discovery
+
+### Agents (10 specialized agents)
+- `spec-requirements` - EARS-format requirements creation
+- `spec-design` - Architecture design documents
+- `spec-tasks` - Task breakdown with parallelization
+- `spec-impl` - Individual task execution (1-7 parallel)
+- `spec-judge` - Tree-based quality evaluation
+- `spec-validator` - Post-implementation validation
+- `spec-test` - Test execution
+- `spec-quality` - Universal quality improvement
+- `code-reviewer` - Code review and feedback
+- `spec-system-prompt-loader` - Dynamic prompt loading
+
+### Intelligence Components
+- **Pattern Recognizer** - Detects project pattern (92% accuracy)
+- **Skills Generator** - Auto-generates context-efficient summaries
+- **Learning Engine** - Tracks metrics, improves over time
+- **Template Selector** - Picks optimal pattern template
+
+### Validators
+- **Pre-flight Validation** - 5-layer validation before execution:
+  1. Requirements coverage
+  2. Design conformance
+  3. Task dependency DAG
+  4. Context budget limits
+  5. Phase structure optimization
 
 ---
 
@@ -284,12 +364,50 @@ Ouroboros doesn't just execute your plan—it **learns** from execution and **im
 - Not just for code, but for **ANY project**
 - Not just a tool, but a **growing intelligence**
 
+The framework embodies its name: a self-consuming, self-improving cycle where:
+1. Execution reveals discoveries
+2. Discoveries update tasks
+3. Updated tasks improve future specs
+4. Better specs accelerate execution
+5. Repeat infinitely, growing stronger each time
+
+---
+
+## Support & Contributions
+
+- **Issues**: [GitHub Issues](https://github.com/seanGSISG/ouroboros-framework/issues)
+- **Discussions**: Share your specs and experiences
+- **Pull Requests**: Contributions welcome!
+
 ---
 
 ## License
 
-*To be determined - suggest MIT or Apache 2.0*
+MIT License - See LICENSE file for details
 
 ---
 
-🐍 **Ready to begin? Run `/new-spec` and let the serpent guide you!** 🐍
+## Quick Reference Card
+
+```
+CREATE:    /ou-new-spec {name}
+EXPAND:    /ou-expand-spec {name} [--interactive|--auto]
+LIST:      /ou-list-specs
+EXECUTE:   Use ouroboros workflow to implement {name}
+ARCHIVE:   /ou-archive {name}
+```
+
+**Typical Workflow**:
+```
+/ou-new-spec my-feature
+  ↓
+/ou-expand-spec my-feature --auto
+  ↓
+Use ouroboros workflow to implement my-feature
+  ↓
+/ou-archive my-feature
+```
+
+---
+
+🐍 **Ready to begin? Run `/ou-new-spec` and let the serpent guide you!** 🐍
